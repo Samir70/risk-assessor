@@ -6,7 +6,7 @@ import './App.css';
 class App extends React.Component {
   render () {
     return (
-      <div className="App">
+      <div className="App blueTheme">
         <h1>Risk Assessor</h1>
         <div id='workSpace'>
           <FormsHolder className='halfWidth' />
