@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const FormsHolder = (props) => {
     return (
-        <Accordion defaultActiveKey='1'>
+        <Accordion defaultActiveKey='1' className={props.className}>
             <FormCard 
               formKey='1' 
               formTitle='R10.1 -- Who is at Risk'

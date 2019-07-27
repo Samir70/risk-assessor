@@ -1,3 +1,17 @@
 .App {
   text-align: center;
+  color: rgb(0, 0, 255);
+  background: #00FFFF;
+}
+
+#workSpace {
+  display: flex;
+  justify-content: space-around;
+  min-height: 100vh;
+}
+
+.halfWidth {
+  width:50vw;
+  padding: 2px;
+  margin: 2px;
 }
