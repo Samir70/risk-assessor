@@ -4,13 +4,17 @@ import TextHolder from './Components/TextHolder';
 import './App.css';
 
 class App extends React.Component {
+  state = {sectionTitle: 'R10.1 -- Who is at Risk'}
+
+  changeSection = (newTitle) => {this.setState({sectionTitle: newTitle})}
+
   render () {
     return (
       <div className="App blueTheme">
         <h1>Risk Assessor</h1>
         <div id='workSpace'>
-          <FormsHolder className='halfWidth' />
-          <TextHolder className='halfWidth' />
+          <FormsHolder className='halfWidth' onAccordionChange={this.changeSection} />
+          <TextHolder className='halfWidth' sectionTitle={this.state.sectionTitle} />
         </div>
       </div>
     );

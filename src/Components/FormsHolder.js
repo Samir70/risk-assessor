@@ -3,33 +3,31 @@ import FormCard from './FormCard';
 import {Accordion} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
+const formTitles = [
+  'R10.1 -- Who is at Risk', 
+  'R10.2 -- Nature of the risk',
+  'R10.3 -- Risk timescale', 
+  'R10.4 -- Circumstances likely to increase risk',
+  'R10.5 -- Factors likely to reduce risk',
+  'R10.6 -- Details of key documents'
+]
+
+const formBodies =[
+  <p>will this work1?</p>,
+  <p>will this work2?</p>,
+  <p>will this work3?</p>,
+  <p>will this work4?</p>,
+  <p>will this work5?</p>,
+  <p>will this work6?</p>
+]
+
+
 const FormsHolder = (props) => {
+  const formsList = formTitles.map((t, i) => 
+     <FormCard Key={'form'+i} formTitle={t} onChange={props.onAccordionChange}>{formBodies[i]}</FormCard> );
     return (
         <Accordion defaultActiveKey='1' className={props.className}>
-            <FormCard 
-              formKey='1' 
-              formTitle='R10.1 -- Who is at Risk'
-              formBody='Everyone is at risk!!!!!!!!!!'  />
-            <FormCard 
-              formKey='2' 
-              formTitle='R10.2 -- Nature of the risk'
-              formBody='Very dangerous but funny!' />
-            <FormCard 
-              formKey='3' 
-              formTitle='R10.3 -- Risk timescale'
-              formBody='Counting down from 10, 9, 8, ...' />
-            <FormCard 
-              formKey='4' 
-              formTitle='R10.4 -- Circumstances likely to increase risk'
-              formBody='Daylight' />
-            <FormCard 
-              formKey='5' 
-              formTitle='R10.5 -- Factors likely to reduce risk'
-              formBody='Ice-cream!' />
-            <FormCard 
-              formKey='6' 
-              formTitle='R10.6 -- Details of key documents'
-              formBody='Brexit roadmap to hell' />
+            {formsList}
         </Accordion>
     )
 }

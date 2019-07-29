@@ -2,7 +2,10 @@ import React from 'react';
 
 const TextHolder = (props) => {
     return (
-        <p className={props.className}>This is a place for the output text</p>
+        <div className={props.className} >
+            <h1>{props.sectionTitle}</h1>
+            <p>This is a place for the output text</p>
+        </div>
     )
 }
 
