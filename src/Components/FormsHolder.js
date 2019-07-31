@@ -24,7 +24,11 @@ const formBodies =[
 
 const FormsHolder = (props) => {
   const formsList = formTitles.map((t, i) => 
-     <FormCard key={'form'+i} formTitle={t} onChange={props.onAccordionChange}>{formBodies[i]}</FormCard> );
+     <FormCard 
+       key={'form'+i} 
+       eKey={'form'+i} 
+       formTitle={t} 
+       onChange={props.onAccordionChange}>{formBodies[i]}</FormCard> );
     return (
         <Accordion defaultActiveKey='none' className={props.className}>
             {formsList}
