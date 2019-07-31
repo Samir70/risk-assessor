@@ -4,7 +4,7 @@ import TextHolder from './Components/TextHolder';
 import './App.css';
 
 class App extends React.Component {
-  state = {sectionTitle: 'R10.1 -- Who is at Risk'}
+  state = {sectionTitle: 'Pick a section to get started'}
 
   changeSection = (newTitle) => {this.setState({sectionTitle: newTitle})}
 
