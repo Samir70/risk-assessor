@@ -1,16 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import FormCard from './FormCard';
 import {Accordion} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-
-const formTitles = [
-  'R10.1 -- Who is at Risk', 
-  'R10.2 -- Nature of the risk',
-  'R10.3 -- Risk timescale', 
-  'R10.4 -- Circumstances likely to increase risk',
-  'R10.5 -- Factors likely to reduce risk',
-  'R10.6 -- Details of key documents'
-]
 
 const formBodies =[
   <p>will this work1?</p>,
@@ -23,12 +15,11 @@ const formBodies =[
 
 
 const FormsHolder = (props) => {
-  const formsList = formTitles.map((t, i) => 
+  const formsList = props.formTitles.map((t, i) => 
      <FormCard 
        key={'form'+i} 
        eKey={'form'+i} 
-       formTitle={t} 
-       onChange={props.onAccordionChange}>{formBodies[i]}</FormCard> );
+       formTitle={t} >{formBodies[i]}</FormCard> );
     return (
         <Accordion defaultActiveKey='none' className={props.className}>
             {formsList}
@@ -36,4 +27,8 @@ const FormsHolder = (props) => {
     )
 }
 
-export default FormsHolder;
+const mapStateToProps = (state) => {
+  return {formTitles : state.formTitles}
+}
+
+export default connect(mapStateToProps)(FormsHolder);
