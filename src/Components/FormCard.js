@@ -4,6 +4,7 @@ import {Card, Accordion} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const FormCard = (props) => {
+    console.log('FormCard')
     return (
     <Card>
         <Accordion.Toggle 
