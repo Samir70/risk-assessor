@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 const TextHolder = (props) => {
+    console.log('TextHolder')
     return (
         <div className={props.className} >
             <h1>{props.sectionTitle}</h1>
@@ -9,4 +11,10 @@ const TextHolder = (props) => {
     )
 }
 
-export default TextHolder;
+const mapStateToProps = (state) => {
+    return {
+      sectionTitle: state.sectionTitle
+    }
+  }
+
+export default connect(mapStateToProps)(TextHolder);
