@@ -6,14 +6,16 @@ const TextHolder = (props) => {
     return (
         <div className={props.className} >
             <h1>{props.sectionTitle}</h1>
-            <p>This is a place for the output text</p>
+            <p>{props.formText}</p>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-      sectionTitle: state.sectionTitle
+      sectionTitle: state.sectionTitle,
+      formID: state.formID,
+      formText: state.formTexts[state.formID]
     }
   }
 
