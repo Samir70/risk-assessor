@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 const TextHolder = (props) => {
-    console.log('TextHolder')
+    console.log('TextHolder props: ', props)
     return (
         <div className={props.className} >
             <h1>{props.sectionTitle}</h1>

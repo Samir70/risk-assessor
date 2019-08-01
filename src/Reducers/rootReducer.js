@@ -3,7 +3,7 @@ const initialState = {
     formID: 'none', // use this to select the formText
     // formTexts are the text summaries that appear in clipboard area once data is added
     formTexts: {
-        form0: 'text for form0',
+        WhoAtRisk: 'text for form0',
         form1: 'text for form1',
         form2: 'text for form2',
         form3: 'text for form3',
@@ -29,7 +29,7 @@ const rootReducer = (state = initialState, action) => {
         }
         case 'UPDATE_AT_RISK_TEXT' : return {
             ...state,
-            formTexts: {...state.formTexts, form0:action.newText}
+            formTexts: {...state.formTexts, WhoAtRisk:action.newText}
         }
         default: return state;
     }    

@@ -4,32 +4,22 @@ import WhoAtRiskForm from './Forms/WhoAtRiskForm';
 import {Accordion} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const formTitles = [
-  'R10.1 -- Who is at Risk', 
-  'R10.2 -- Nature of the risk',
-  'R10.3 -- Risk timescale', 
-  'R10.4 -- Circumstances likely to increase risk',
-  'R10.5 -- Factors likely to reduce risk',
-  'R10.6 -- Details of key documents'
+const formsArray = [
+  {id: 'WhoAtRisk', title:'R10.1 -- Who is at Risk', body: <WhoAtRiskForm />}, 
+  {id: 'NatureOfRisk', title:'R10.2 -- Nature of the risk', body:<p>Temp body</p>},
+  {id: 'Timescale', title:'R10.3 -- Risk timescale', body:<p>Temp body</p>}, 
+  {id: 'CircIncRisk', title:'R10.4 -- Circumstances likely to increase risk', body:<p>Temp body</p>},
+  {id: 'FactIncRisk', title:'R10.5 -- Factors likely to reduce risk', body:<p>Temp body</p>},
+  {id: 'DocDetails', title:'R10.6 -- Details of key documents', body:<p>Temp body</p>}
 ]
-
-const formBodies =[
-  <WhoAtRiskForm />,
-  <p>will this work2?</p>,
-  <p>will this work3?</p>,
-  <p>will this work4?</p>,
-  <p>will this work5?</p>,
-  <p>will this work6?</p>
-]
-
 
 const FormsHolder = (props) => {
   console.log('FormsHolder')
-  const formsList = formTitles.map((t, i) => 
+  const formsList = formsArray.map(f => 
      <FormCard 
-       key={'form'+i} 
-       eKey={'form'+i} 
-       formTitle={t} >{formBodies[i]}</FormCard> );
+       key={f.id} 
+       eKey={f.id} 
+       formTitle={f.title} >{f.body}</FormCard> );
     return (
         <Accordion defaultActiveKey='none' className={props.className}>
             {formsList}
