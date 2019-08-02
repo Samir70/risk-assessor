@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateAtRisk, addKnownPersonAtRisk } from '../../../Reducers/actions';
+import MembersOfThePublic from './MembersOfThePublic';
 import { Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -12,7 +14,7 @@ const WhoAtRiskForm = (props) => {
             alert('The list of people at risk already includes '+personAtRisk)
         } else {
             if (personAtRisk) {
-                props.dispatch({type:'ADD_PERSON_AT_RISK', person:personAtRisk});
+                props.dispatch(addKnownPersonAtRisk(personAtRisk));
                 personAtRiskInput.current.value = '';
             }
         }
@@ -24,7 +26,7 @@ const WhoAtRiskForm = (props) => {
         return people.slice(0, -1).join(', ')+' and '+people.slice(-1)+' are at risk.'
     }
 
-    props.dispatch({type:'UPDATE_AT_RISK_TEXT', newText: updateFormText(props.peopleAtRisk)})
+    props.dispatch(updateAtRisk(updateFormText(props.peopleAtRisk)));
 
     const peopleList = props.peopleAtRisk.map((person, i) => <li key={i}>{person}</li>);
 
@@ -33,6 +35,8 @@ const WhoAtRiskForm = (props) => {
     return (
         <div>
             <Form onSubmit={handleSubmit}>
+                <MembersOfThePublic />
+                
                 <Form.Group>
                     <Form.Control 
                       type="text" 
@@ -50,7 +54,7 @@ const WhoAtRiskForm = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        peopleAtRisk: state.WhoAtRisk.peopleAtRisk
+        peopleAtRisk: state.WhoAtRisk.summary.peopleAtRisk
     }
 }
 

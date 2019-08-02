@@ -1,6 +1,6 @@
 import React from 'react';
 import FormCard from './FormCard';
-import WhoAtRiskForm from './Forms/WhoAtRiskForm';
+import WhoAtRiskForm from './Forms/WhoAtRisk/WhoAtRiskForm';
 import {Accordion} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
