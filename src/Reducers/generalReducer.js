@@ -1,3 +1,5 @@
+import { CHANGE_SECTION } from './actions';
+
 const initialGeneralState = {
     sectionTitle: 'R10.1 -- Who is at Risk', 
     formID: 'WhoAtRisk', // use this to select the part of state holding the relevent formSummary
@@ -8,7 +10,7 @@ const initialGeneralState = {
 const genearlReducer = (state = initialGeneralState, action) => {
     //console.log('genearlReducer called', state, action);
     switch (action.type) {
-        case 'CHANGE_SECTION' : return {
+        case CHANGE_SECTION : return {
             ...state,
             sectionTitle: action.newSection, 
             formID: action.formID
