@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateAtRisk, addKnownPersonAtRisk } from '../../../Reducers/actions';
+import { addKnownPersonAtRisk } from '../../../Reducers/actions';
 import MembersOfThePublic from './MembersOfThePublic';
 import { Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -19,14 +19,6 @@ const WhoAtRiskForm = (props) => {
             }
         }
     }
-
-    const updateFormText = (people) => {
-        if (people.length===0) {return 'So far: no-one is at risk.'}
-        if (people.length===1) {return people[0]+' is at risk.'}
-        return people.slice(0, -1).join(', ')+' and '+people.slice(-1)+' are at risk.'
-    }
-
-    props.dispatch(updateAtRisk(updateFormText(props.peopleAtRisk)));
 
     const peopleList = props.peopleAtRisk.map((person, i) => <li key={i}>{person}</li>);
 

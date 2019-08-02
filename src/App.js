@@ -1,6 +1,6 @@
 import React from 'react';
 import FormsHolder from './Components/FormsHolder';
-import TextHolder from './Components/TextHolder';
+import FormSummary from './Components/FormSummary';
 import './App.css';
 
 class App extends React.Component {
@@ -11,7 +11,7 @@ class App extends React.Component {
         <h1>Risk Assessor</h1>
         <div id='workSpace'>
           <FormsHolder className='halfWidth' />
-          <TextHolder className='halfWidth'  />
+          <FormSummary className='halfWidth'  />
         </div>
       </div>
     );

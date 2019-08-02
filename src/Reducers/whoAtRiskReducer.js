@@ -1,22 +1,17 @@
-import { UPDATE_AT_RISK_TEXT, ADD_KNOWN_PERSON_AT_RISK } from './actions';
-import { CHECK_MALE } from './actions';
+import { ADD_KNOWN_PERSON_AT_RISK } from './actions';
+import { CHECK_MALE, CHECK_FEMALE, CHECK_TRANS } from './actions';
 import { combineReducers } from 'redux';
 
 const initialWhoAtRisk = {  
-    formSummary: 'initial summary, should be changed before anyone sees it.',
     peopleAtRisk: []
 }
 
 const summaryReducer = (state = initialWhoAtRisk, action) => {
-    console.log('whoAtRiskReducer called ', state, action);
+    //console.log('whoAtRisk summaryReducer called ', state, action);
     switch (action.type) {
         case ADD_KNOWN_PERSON_AT_RISK : return {
             ...state,
             peopleAtRisk: state.peopleAtRisk.concat(action.person)
-        }
-        case UPDATE_AT_RISK_TEXT : return {
-            ...state,
-            formSummary: action.newSummary
         }
         default: return state;
     }
@@ -28,10 +23,19 @@ const initialMemPubForm = {
     transgender : false
 }
 const memPubReducer = (state = initialMemPubForm, action) => {
+    console.log('memPubreducer called ', state, action)
     switch (action.type) {
         case CHECK_MALE : return {
             ...state,
             male: !state.male
+        }
+        case CHECK_FEMALE : return {
+            ...state,
+            female: !state.female
+        }
+        case CHECK_TRANS : return {
+            ...state,
+            transgender: !state.transgender
         }
         default: return state;
     }

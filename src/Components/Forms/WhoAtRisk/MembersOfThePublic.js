@@ -3,24 +3,30 @@ import { connect } from 'react-redux';
 import { Form, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const MembersOfThePublic = ({maleChecked}) => {
+import { CHECK_MALE, CHECK_FEMALE, CHECK_TRANS } from '../../../Reducers/actions';
+
+const MembersOfThePublic = ({maleChecked, dispatch}) => {
     return (
         <div>
             <h3>Members of the public</h3>
-            <Form>
-              <fieldset>
-                <Form.Group as={Row} >
-                    <Form.Label as={'legend'} column sm={3} >
-                        Gender
-                    </Form.Label>
-                    <Col sm={9}>
-                        <Form.Check inline type='checkbox' label='Male' checked={maleChecked} />
-                        <Form.Check inline type='checkbox' label='Female' />
-                        <Form.Check inline type='checkbox' label='Transgender' />
-                    </Col>
-                </Form.Group>
-              </fieldset>
-            </Form>
+            <fieldset>
+              <Form.Group as={Row} >
+                  <Form.Label as={'legend'} column sm={3} >
+                      Gender
+                  </Form.Label>
+                  <Col sm={9}>
+                      <Form.Check inline type='checkbox' 
+                        label='Male' 
+                        onChange={()=>dispatch({type:CHECK_MALE})} />
+                      <Form.Check inline type='checkbox' 
+                        label='Female'
+                        onChange={()=>dispatch({type:CHECK_FEMALE})} />
+                      <Form.Check inline type='checkbox' 
+                        label='Transgender'
+                        onChange={()=>dispatch({type:CHECK_TRANS})} />
+                  </Col>
+              </Form.Group>
+            </fieldset>
         </div>
     )
 }
