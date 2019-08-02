@@ -3,7 +3,7 @@ const initialDocs = {
 }
 
 const docReducer = (state = initialDocs, action) => {
-    console.log('docReducer called', state, action);
+    //console.log('docReducer called', state, action);
     switch (action.type) {
         case 'who knows' : return {
             ...state,

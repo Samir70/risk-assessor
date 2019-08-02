@@ -3,7 +3,7 @@ const initialTimescale = {
 }
 
 const timescaleReducer = (state = initialTimescale, action) => {
-    console.log('timescaleReducer called', state, action);
+    //console.log('timescaleReducer called', state, action);
     switch (action.type) {
         case 'who knows' : return {
             ...state,

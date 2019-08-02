@@ -3,7 +3,7 @@ const initialNatureOfRisk = {
 }
 
 const natureOfRiskReducer = (state = initialNatureOfRisk, action) => {
-    console.log('natureOfRiskReducer called', state, action);
+    //console.log('natureOfRiskReducer called', state, action);
     switch (action.type) {
         case 'who knows' : return {
             ...state,

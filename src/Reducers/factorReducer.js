@@ -3,7 +3,7 @@ const initialFactors = {
 }
 
 const factorReducer = (state = initialFactors, action) => {
-    console.log('factorReducer called', state, action);
+    //console.log('factorReducer called', state, action);
     switch (action.type) {
         case 'who knows' : return {
             ...state,

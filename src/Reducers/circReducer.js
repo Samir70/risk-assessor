@@ -3,7 +3,7 @@ const initialCircumstances = {
 }
 
 const circReducer = (state = initialCircumstances, action) => {
-    console.log('circReducer called', state, action);
+    //console.log('circReducer called', state, action);
     switch (action.type) {
         case 'who knows' : return {
             ...state,

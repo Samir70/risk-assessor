@@ -6,7 +6,7 @@ const initialGeneralState = {
 }
 
 const genearlReducer = (state = initialGeneralState, action) => {
-    console.log('genearlReducer called', state, action);
+    //console.log('genearlReducer called', state, action);
     switch (action.type) {
         case 'CHANGE_SECTION' : return {
             ...state,
