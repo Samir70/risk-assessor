@@ -5,6 +5,9 @@ import {Accordion} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const formsArray = [
+  // NB: these IDs are also used to split the redux store into parts: 
+  // one for each of these sections
+  // So don't change them!
   {id: 'WhoAtRisk', title:'R10.1 -- Who is at Risk', body: <WhoAtRiskForm />}, 
   {id: 'NatureOfRisk', title:'R10.2 -- Nature of the risk', body:<p>Temp body</p>},
   {id: 'Timescale', title:'R10.3 -- Risk timescale', body:<p>Temp body</p>}, 
@@ -21,7 +24,7 @@ const FormsHolder = (props) => {
        eKey={f.id} 
        formTitle={f.title} >{f.body}</FormCard> );
     return (
-        <Accordion defaultActiveKey='none' className={props.className}>
+        <Accordion defaultActiveKey='WhoAtRisk' className={props.className}>
             {formsList}
         </Accordion>
     )

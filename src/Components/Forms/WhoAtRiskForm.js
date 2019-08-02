@@ -50,7 +50,7 @@ const WhoAtRiskForm = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        peopleAtRisk: state.peopleAtRisk
+        peopleAtRisk: state.WhoAtRisk.peopleAtRisk
     }
 }
 

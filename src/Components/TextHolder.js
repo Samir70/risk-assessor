@@ -13,9 +13,9 @@ const TextHolder = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-      sectionTitle: state.sectionTitle,
-      formID: state.formID,
-      formText: state.formTexts[state.formID]
+      sectionTitle: state.general.sectionTitle,
+      formID: state.general.formID,
+      formText: state[state.general.formID].formSummary
     }
   }
 
