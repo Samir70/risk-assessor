@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Form } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 import makeCheckboxGroup  from '../../../DataHandlers/makeCheckboxGroup';
 import { GENDER_CHECK, CHECK_AGE, CHECK_CHILD_TYPE } from '../../../Reducers/actions';
@@ -36,13 +39,13 @@ const MembersOfThePublic = ({genderFlags, ageFlags, childTypeFlags, dispatch}) =
     }
     
     return (
-        <div>
+        <Form>
             <h3>Members of the public</h3>
             {makeCheckboxGroup(genderCheckboxData)}
             {makeCheckboxGroup(ageCheckboxData)}
             {(ageFlags[0]||ageFlags[1]||ageFlags[2]) && makeCheckboxGroup(typeOfchildren)}
             {makeCheckboxGroup(relToOffender)}
-        </div>
+        </Form>
     )
 }
 
