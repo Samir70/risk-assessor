@@ -2,11 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import makeCheckboxGroup  from '../../../DataHandlers/makeCheckboxGroup';
-import { GENDER_CHECK } from '../../../Reducers/actions';
+import { GENDER_CHECK, CHECK_AGE } from '../../../Reducers/actions';
 
-const parseAgeFlags = (str) => [...str].map(c => c==='1'?true:false);
-
-const MembersOfThePublic = ({genderFlags, dispatch}) => {
+const MembersOfThePublic = ({genderFlags, ageFlags, dispatch}) => {
     const genderCheckboxData = {
         legend: 'Gender',
         labels: ['Male', 'Female', 'Transgender'],
@@ -16,9 +14,9 @@ const MembersOfThePublic = ({genderFlags, dispatch}) => {
     }
     const ageCheckboxData = {
         legend: 'Age Group',
-        labels: ['0-2', '3-12', '13-18', '19-40', '40-60', '60+'],
-        stateProp: parseAgeFlags('110000'),
-        actions: ['CHECK_AGE'],
+        labels: ['0-2', '3-12', '13-18', '19-39', '40-59', '60+'],
+        stateProp: ageFlags,
+        action: CHECK_AGE,
         changed: dispatch
     }
     return (
@@ -32,7 +30,8 @@ const MembersOfThePublic = ({genderFlags, dispatch}) => {
 
 const mapStateToProps = (state) => {
     return {
-        genderFlags: state.WhoAtRisk.memPub.genderFlags
+        genderFlags: state.WhoAtRisk.memPub.genderFlags,
+        ageFlags: state.WhoAtRisk.memPub.ageFlags,
         // maleChecked: state.WhoAtRisk.memPub.male,
         // femaleChecked: state.WhoAtRisk.memPub.female,
         // transChecked: state.WhoAtRisk.memPub.transgender

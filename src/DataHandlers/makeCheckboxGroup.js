@@ -21,7 +21,7 @@ const makeCheckboxGroup = ({legend, labels, stateProp, action, changed}) => {
                         key={legend + i}
                         label={label}
                         checked={stateProp[i]}
-                        onChange={()=>changed({type:action, genderIndex:i})} />
+                        onChange={()=>changed({type:action, flagIndex:i})} />
         )
     });
 

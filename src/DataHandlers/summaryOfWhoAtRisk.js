@@ -1,4 +1,5 @@
 import React from 'react';
+import { genderTextArray, agesTextArray } from '../Reducers/whoAtRiskReducer';
 
 const peopleAtRiskSentence = (people) => {
     if (people.length===0) {return 'So far: no-one is at risk.'}
@@ -6,25 +7,27 @@ const peopleAtRiskSentence = (people) => {
     return people.slice(0, -1).join(', ')+' and '+people.slice(-1)+' are at risk.'
 }
 
-const genderSentence = ({genderFlags}) => {
-    var genderList = [],
-        genders = ['men', 'women', 'transgender people'];
-    for (var i in genderFlags) {
-        if (genderFlags[i]) { genderList.push(genders[i]) }
+const flagsToText = (topic, flags, textArray) => {
+    var includeList = [];
+    for (var i in flags) {
+        if (flags[i]) { includeList.push(textArray[i]) }
     }
 
-    switch (genderList.length) {
-        case 0 : return 'The offender is not a danger to members of the public based on gender.'
-        case 1 : return 'The offender is a danger to '+genderList[0]+'.'
-        case 2 : return 'The offender is a danger to '+genderList[0]+' and '+genderList[1]+'.'
-        case 3 : return 'The offender is a danger to '+genderList[0]+', '+genderList[1]+' and '+genderList[2]
-        default : return 'The offender is a danger to more genders than I was aware of.'
+    switch (includeList.length) {
+        case 0 : return 'The offender does not choose victims based on ' + topic+'.';
+        case 1 : return 'The offender poses a risk to '+includeList[0]+'.';
+        case 2 : return 'The offender poses a risk to '+includeList[0]+' and '+includeList[1]+'.';
+        default: return 'The offender poses a risk to '
+              +includeList.slice(0, -1).join(', ')+' and '
+              +includeList[includeList.length-1]+'.'
     }
 }
 
 const summaryOfWhoAtRisk = (formData) => {
     const knownAdultsSentence = peopleAtRiskSentence(formData.summary.peopleAtRisk);
-    const membersOfPublicSentence = genderSentence(formData.memPub)
+    const membersOfPublicSentence = 
+        flagsToText('gender', formData.memPub.genderFlags, genderTextArray) + '  '+
+        flagsToText('age', formData.memPub.ageFlags, agesTextArray);
     return (
         <div>
             <p>{membersOfPublicSentence}</p>
