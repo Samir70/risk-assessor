@@ -20,3 +20,4 @@ export const addKnownPersonAtRisk = (person) => {
 
 export const GENDER_CHECK = 'GENDER_CHECK';
 export const CHECK_AGE = 'CHECK_AGE';
+export const CHECK_CHILD_TYPE = 'CHECK_CHILD_TYPE';
