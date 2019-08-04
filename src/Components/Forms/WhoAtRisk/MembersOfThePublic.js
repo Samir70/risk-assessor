@@ -1,44 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, Row, Col } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
 
-import { CHECK_MALE, CHECK_FEMALE, CHECK_TRANS } from '../../../Reducers/actions';
+import makeCheckboxGroup  from '../../../DataHandlers/makeCheckboxGroup';
+import { GENDER_CHECK } from '../../../Reducers/actions';
 
-const MembersOfThePublic = ({maleChecked, femaleChecked, transChecked, dispatch}) => {
+const parseAgeFlags = (str) => [...str].map(c => c==='1'?true:false);
+
+const MembersOfThePublic = ({genderFlags, dispatch}) => {
+    const genderCheckboxData = {
+        legend: 'Gender',
+        labels: ['Male', 'Female', 'Transgender'],
+        stateProp: genderFlags, 
+        action: GENDER_CHECK, 
+        changed: dispatch
+    }
+    const ageCheckboxData = {
+        legend: 'Age Group',
+        labels: ['0-2', '3-12', '13-18', '19-40', '40-60', '60+'],
+        stateProp: parseAgeFlags('110000'),
+        actions: ['CHECK_AGE'],
+        changed: dispatch
+    }
     return (
         <div>
             <h3>Members of the public</h3>
-            <fieldset>
-              <Form.Group as={Row} >
-                  <Form.Label as={'legend'} column sm={3} >
-                      Gender
-                  </Form.Label>
-                  <Col sm={9}>
-                      <Form.Check inline type='checkbox' 
-                        label='Male' 
-                        checked={maleChecked}
-                        onChange={()=>dispatch({type:CHECK_MALE})} />
-                      <Form.Check inline type='checkbox' 
-                        label='Female'
-                        checked={femaleChecked}
-                        onChange={()=>dispatch({type:CHECK_FEMALE})} />
-                      <Form.Check inline type='checkbox' 
-                        label='Transgender'
-                        checked={transChecked}
-                        onChange={()=>dispatch({type:CHECK_TRANS})} />
-                  </Col>
-              </Form.Group>
-            </fieldset>
+            {makeCheckboxGroup(genderCheckboxData)}
+            {makeCheckboxGroup(ageCheckboxData)}
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        maleChecked: state.WhoAtRisk.memPub.male,
-        femaleChecked: state.WhoAtRisk.memPub.female,
-        transChecked: state.WhoAtRisk.memPub.transgender
+        genderFlags: state.WhoAtRisk.memPub.genderFlags
+        // maleChecked: state.WhoAtRisk.memPub.male,
+        // femaleChecked: state.WhoAtRisk.memPub.female,
+        // transChecked: state.WhoAtRisk.memPub.transgender
     }
 }
 

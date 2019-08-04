@@ -6,11 +6,13 @@ const peopleAtRiskSentence = (people) => {
     return people.slice(0, -1).join(', ')+' and '+people.slice(-1)+' are at risk.'
 }
 
-const genderSentence = ({male, female, transgender}) => {
-    var genderList = [];
-    if (male) { genderList.push('men') }
-    if (female) { genderList.push('women') }
-    if (transgender) { genderList.push('transgender people') }
+const genderSentence = ({genderFlags}) => {
+    var genderList = [],
+        genders = ['men', 'women', 'transgender people'];
+    for (var i in genderFlags) {
+        if (genderFlags[i]) { genderList.push(genders[i]) }
+    }
+
     switch (genderList.length) {
         case 0 : return 'The offender is not a danger to members of the public based on gender.'
         case 1 : return 'The offender is a danger to '+genderList[0]+'.'

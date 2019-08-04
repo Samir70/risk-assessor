@@ -18,6 +18,4 @@ export const addKnownPersonAtRisk = (person) => {
     }
 }
 
-export const CHECK_MALE = 'CHECK_MALE';
-export const CHECK_FEMALE = 'CHECK_FEMALE';
-export const CHECK_TRANS = 'CHECK_TRANS';
+export const GENDER_CHECK = 'GENDER_CHECK';

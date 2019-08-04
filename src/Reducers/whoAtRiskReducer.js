@@ -1,5 +1,5 @@
 import { ADD_KNOWN_PERSON_AT_RISK } from './actions';
-import { CHECK_MALE, CHECK_FEMALE, CHECK_TRANS } from './actions';
+import { GENDER_CHECK } from './actions';
 import { combineReducers } from 'redux';
 
 const initialWhoAtRisk = {  
@@ -18,24 +18,15 @@ const summaryReducer = (state = initialWhoAtRisk, action) => {
 }
 
 const initialMemPubForm = {
-    male: false,
-    female : false,
-    transgender : false
+    // and array of flags for the male, female, transgender checkboxes
+    genderFlags : [false, false, false] 
 }
 const memPubReducer = (state = initialMemPubForm, action) => {
     console.log('memPubreducer called ', state, action)
     switch (action.type) {
-        case CHECK_MALE : return {
+        case GENDER_CHECK: return {
             ...state,
-            male: !state.male
-        }
-        case CHECK_FEMALE : return {
-            ...state,
-            female: !state.female
-        }
-        case CHECK_TRANS : return {
-            ...state,
-            transgender: !state.transgender
+            genderFlags: state.genderFlags.map((g, i) => i===action.genderIndex?!g:g)
         }
         default: return state;
     }
