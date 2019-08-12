@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import genearlReducer from './generalReducer';
+import generalReducer from './generalReducer';
+import offDataReducer from './offDataReducer';
 import whoAtRiskReducer from './whoAtRiskReducer';
 import natureOfRiskReducer from './natureOfRiskReducer';
 import timescaleReducer from './timescaleReducer';
@@ -20,7 +21,8 @@ import docReducer from './docReducer';
 
 
 const rootReducer = combineReducers({
-    general: genearlReducer,
+    general: generalReducer,
+    OffenderData: offDataReducer,
     WhoAtRisk: whoAtRiskReducer,
     NatureOfRisk: natureOfRiskReducer, 
     Timescale: timescaleReducer,

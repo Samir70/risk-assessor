@@ -21,3 +21,9 @@ export const addKnownPersonAtRisk = (person) => {
 export const GENDER_CHECK = 'GENDER_CHECK';
 export const CHECK_AGE = 'CHECK_AGE';
 export const CHECK_CHILD_TYPE = 'CHECK_CHILD_TYPE';
+
+//for offender data
+export const UPDATE_OFFENDER_FIRST_NAME = 'UPDATE_OFFENDER_FIRST_NAME';
+export const UPDATE_OFFENDER_SECOND_NAME = 'UPDATE_OFFENDER_SECOND_NAME';
+export const SET_OFFENDER_PRONOUN = 'SET_OFFENDER_PRONOUN';
+export const UPDATE_OFFENDER_REFERENCE = 'UPDATE_OFFENDER_REFERENCE'; 

@@ -6,6 +6,13 @@ const FormSummary = (props) => {
     console.log('FormSummary props: ', props);
     var summaryText = 'This text is from before switch.'
     switch (props.formID) {
+      case 'OffenderData' : {
+        summaryText = 'The offender is called '
+            +props.formState.firstName+' '+props.formState.secondName
+            +', and will be referred to as '+props.formState.offenderRef
+            +' or with the pronoun: '+props.formState.offenderPronoun;
+        break;
+      }
       case 'WhoAtRisk' : { 
         summaryText = summaryOfWhoAtRisk(props.formState);
         break;
